@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 
 var axios = require('axios')
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = 'http://localhost:9797/'
+axios.defaults.baseURL = 'http://xf.express.web:9797/'
 
 /* eslint-disable no-new */
 new Vue({
