@@ -21,8 +21,8 @@
       <el-form-item style="width: 100%">
         <el-button
           type="primary"
-          style="width: 100%;  border: none"
-          @click="login"
+          style="width: 100%; border: none"
+          @click="loginSubmit"
           >登录</el-button
         >
       </el-form-item>
@@ -31,7 +31,10 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
+import { Message } from "element-ui";
+import {login} from "@/api/login";
+import store from "@/store";
 export default {
   name: "Login",
   data() {
@@ -44,23 +47,20 @@ export default {
     };
   },
   methods: {
-      login() {
-          console.log('nihaoa');
-          this.$axios
-          .post('/user/login', {
-              username: this.loginForm.username,
-              password: this.loginForm.password
-          }).then(successResponse => {
-              if(successResponse.data.code === 200) {
-                  this.$router.replace({path: '/'})
-              }else if(successResponse.data.code === 500) {
-                  let message = successResponse.data.message;
-                  alert(message);
-              }
-          }).catch(failResponse => {
-              
-          })
-      }
+    loginSubmit() {
+      login(this.loginForm.username, this.loginForm.password)
+        .then((successResponse) => {
+          if (successResponse.data.code === 200) {
+            let data = successResponse.data.data;
+            store.dispatch("SetToken", data.token);
+            this.$router.replace({ path: "/home" });
+          } else if (successResponse.data.code === 500) {
+            let message = successResponse.data.message;
+            Message.error(message);
+          }
+        })
+        .catch((failResponse) => {});
+    },
   },
 };
 </script>
