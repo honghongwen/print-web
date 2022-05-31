@@ -1,22 +1,47 @@
 import Vue from 'vue'
+
+import Layout from '@/layout'
 import Router from 'vue-router'
-import Login from '@/views/Login.vue'
-import Home from '@/views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    },
-    {
-      path: '/home',
-      name: 'Home',
-      component: Home
-    }
-  ]
-})
+
+export const currencyRoutes = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login'),
+    meta: {title: '登录页'},
+    hidden: true
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/error-page/404.vue'),
+    hidden: true
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Layout,
+    redirect: '/dashbord',
+    children: [
+      {
+        path: 'dashbord',
+        name: 'Dashbord',
+        component: () => import('@/views/dashbord'),
+        meta: {title: '首页', icon: 'el-icon-s-data'}
+      }
+    ]
+  }
+]
+
+const createRouter = () => {
+  return new Router({
+    routes: currencyRoutes
+  })
+}
+
+const router = createRouter()
+
+export default router

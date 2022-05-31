@@ -1,0 +1,23 @@
+{
+  "id": "3437551",
+  "name": "vue",
+  "font_family": "element-icons",
+  "css_prefix_text": "el-icon",
+  "description": "vue icons",
+  "glyphs": [
+    {
+      "icon_id": "21497124",
+      "name": "新车报价",
+      "font_class": "xinchebaojia",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "18267906",
+      "name": "底层架构",
+      "font_class": "dicengjiagou",
+      "unicode": "e98c",
+      "unicode_decimal": 59788
+    }
+  ]
+}
