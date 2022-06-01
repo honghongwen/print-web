@@ -1,0 +1,13 @@
+.mainPage {
+  height: calc(100% - 50px);
+  width: calc(100% - 200px);
+  position: fixed;
+  left: 200px;
+  top: 50px;
+  background-color: #f0f3f4;
+  transition: all 0.3s;
+
+  &>div {
+    padding: 36px 30px;
+  }
+}

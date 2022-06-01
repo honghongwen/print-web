@@ -33,6 +33,46 @@ export const currencyRoutes = [
         meta: {title: '首页', icon: 'el-icon-s-data'}
       }
     ]
+  },
+  {
+    path: '/analyze',
+    name: 'Analyze',
+    component: Layout,
+    redirect: '/analyze/day',
+    children: [
+      {
+        path: 'day',
+        name: 'Day',
+        component: () => import('@/views/analyze/day'),
+        meta: {title: '日报', icon: 'el-icon-s-data'}
+      },
+      {
+        path: 'month',
+        name: 'Month',
+        component: () => import('@/views/analyze/month'),
+        meta: {title: '月报', icon: 'el-icon-s-data'}
+      }
+    ]
+  },
+  {
+    path: '/biz',
+    name: 'Biz',
+    component: Layout,
+    redirect: '/biz/print',
+    children: [
+      {
+        path: 'print',
+        name: 'Print',
+        component: () => import('@/views/biz/print'),
+        meta: {title: '面单打印', icon: 'el-icon-s-data'}
+      },
+      {
+        path: 'trace',
+        name: 'Trace',
+        component: () => import('@/views/biz/trace'),
+        meta: {title: '物流跟踪', icon: 'el-icon-s-data'}
+      }
+    ]
   }
 ]
 

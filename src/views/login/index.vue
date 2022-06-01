@@ -53,7 +53,7 @@ export default {
           if (successResponse.data.code === 200) {
             let data = successResponse.data.data;
             store.dispatch("SetToken", data.token);
-            this.$router.replace({ path: "/home" });
+            this.$router.replace({ path: "/dashbord" });
           } else if (successResponse.data.code === 500) {
             let message = successResponse.data.message;
             Message.error(message);

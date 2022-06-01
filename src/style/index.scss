@@ -1,9 +1,12 @@
 @import './layout.scss';
 @import './sidebar.scss';
+@import './mainpage.scss';
+@import './transition.scss';
 
 html {
   height: 100%;
 }
+
 body,
 div,
 dl,
@@ -29,4 +32,20 @@ th,
 td {
   margin: 0;
   padding: 0;
+}
+
+body {
+  font: 12px/1.5 Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, SimSun, sans-serif;
+}
+
+body,
+#app,
+.wrapper {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
