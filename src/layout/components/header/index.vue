@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header_left">
-      <a href="javascript:;" class="logoLink">大客户打印系统</a>
+      <a href="javascript:;" class="logoLink">打印系统</a>
     </div>
     <div class="header_right">
       <div class="header_right_one">

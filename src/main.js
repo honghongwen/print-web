@@ -10,9 +10,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/font/iconfont.css'
 import 'font-awesome/css/font-awesome.min.css'
 import '@/style/index.scss' // glob scss
+import Region from 'v-region'
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
+Vue.use(Region)
 
 var axios = require('axios')
 Vue.prototype.$axios = axios

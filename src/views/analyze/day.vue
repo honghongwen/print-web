@@ -26,24 +26,17 @@
         </el-table>
       </div>
 
-      <div class="block">
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
-          :page-sizes="[10, 20, 50, 100]"
-          :page-size="10"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="98"
-        >
-        </el-pagination>
-      </div>
+      <page-nation></page-nation>
     </el-card>
   </div>
 </template>
 
   <script>
+import PageNation from "@/components/pageNation";
 export default {
+  components: {
+    PageNation,
+  },
   data() {
     return {
       currentPage: 5,
@@ -78,10 +71,5 @@ export default {
 <style scoped>
 .bottom-table {
   margin-top: 50px;
-}
-.el-pagination {
-  margin-top: 30px;
-  padding-bottom: 20px;
-  float: right;
 }
 </style>
