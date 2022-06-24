@@ -8,6 +8,14 @@ export function addSendMan(data) {
   })
 }
 
+export function editSendMan(data) {
+  return request({
+    url: '/sendMan/edit',
+    method: 'post',
+    data
+  })
+}
+
 
 export function delSendMan(data) {
   return request({

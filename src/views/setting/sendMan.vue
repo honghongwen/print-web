@@ -110,6 +110,7 @@
   import {
     addSendMan,
     delSendMan,
+    editSendMan,
     listSendMan
   } from "@/api/sendMan";
 
@@ -180,6 +181,7 @@
       },
       submitAddSendMan() {
         this.$refs["sendManForm"].validate((valid) => {
+          debugger
           if (valid) {
             // 新增收件人
             if (this.dialog_edit_type === 0) {
@@ -255,13 +257,11 @@
         this.dialog_edit_type = 1;
         this.dialog_title = '编辑常用寄件人';
         this.form = row;
-        // this.form.region = row.regionCode;
+        this.form.region = row.regionCode;
         this.dialogFormVisible = true;
       },
       successconfirm(id) {
-        delSendMan({
-            id: id
-          })
+        delSendMan({id: id})
           .then((successResponse) => {
             if (successResponse.data.code === 200) {
               this.getSendManList();
