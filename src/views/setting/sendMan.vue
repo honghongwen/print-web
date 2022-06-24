@@ -186,15 +186,6 @@
               addSendMan(this.form).then((successResponse) => {
                 let resData = successResponse.data;
                 if (resData.code === 200) {
-                  this.form = {
-                    name: "",
-                    mobile: "",
-                    phone: "",
-                    region: {},
-                    regionJson: "",
-                    address: "",
-                    company: "",
-                  };
                   this.dialogFormVisible = false;
                   // 添加记录成功后再次查询列表
                   this.getSendManList();
@@ -209,12 +200,13 @@
                 if (resData.code === 200) {
                   this.getSendManList();
                 } else {
-                  this.$message.error(resData.message);
+                  this.$notify.error(resData.message);
+                  return false;
                 }
               })
             }
           } else {
-            this.$message.warning("请先填写必填项");
+            this.$notify.warning("请先填写必填项");
             return false;
           }
         });
@@ -224,29 +216,46 @@
           let resData = successResponse.data;
           if (resData.code === 200) {
             this.tableData = resData.data.data;
-            this.total = resData.total;
+            this.total = resData.data.total;
           } else {
             this.$message.error(resData.message);
             return false;
           }
         });
       },
-      handleSelectionChange() {},
-      handleSizeChange() {},
-      handleCurrentChange() {},
+      handleSelectionChange() {
+
+      },
+      handleSizeChange(val) {
+        this.tableQuery.pageSize = val;
+        this.getSendManList();
+      },
+      handleCurrentChange(val) {
+        this.tableQuery.pageNum = val;
+        this.getSendManList();
+      },
       handleDelete(index, row) {
         console.log(index, row);
       },
       handleAdd() {
         this.dialog_title = '新增常用寄件人',
-          this.dialog_edit_type = 0,
-          this.dialogFormVisible = true;
+        this.dialog_edit_type = 0,
+        this.dialogFormVisible = true;
+        this.form = {
+          name: "",
+          mobile: "",
+          phone: "",
+          region: undefined,
+          regionJson: "",
+          address: "",
+          company: "",
+        }
       },
       handleEdit(index, row) {
         this.dialog_edit_type = 1;
         this.dialog_title = '编辑常用寄件人';
         this.form = row;
-        this.form.region = row.regionCode;
+        // this.form.region = row.regionCode;
         this.dialogFormVisible = true;
       },
       successconfirm(id) {
